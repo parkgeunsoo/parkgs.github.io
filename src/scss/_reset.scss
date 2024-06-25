@@ -1,0 +1,145 @@
+
+@mixin mobile {
+    @media (max-width: 600px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 0px) and (max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin device_mobile {
+    @media (min-width: 0px) and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin device_tablet {
+    @media (min-width: 1024px) and (max-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin tablet_pc {
+    @media (min-width: 1280px) and (max-width: 1480px) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media (min-width: 1281px) and (max-width: 1640px) {
+        @content;
+    }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    position: relative;
+    font-family: 'Pretendard', sans-serif !important;
+    -webkit-text-size-adjust: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+
+.App {
+    max-height: 100vh;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-color);
+    }
+}
+
+body,
+div,
+ul,
+li,
+ol,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+textarea,
+p,
+select,
+button,
+figure {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    color: #1a0dab;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, .10);
+}
+
+a:visited {
+    color: #609;
+}
+
+button {
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img,
+fieldset {
+    border: 0;
+}
+
+video,
+img {
+    width: 100%;
+}
+
+ol, li, ul {
+    list-style: none;
+}
+
+em {
+    font-weight: bold;
+    font-style: normal;
+}
+.m-15 {
+    margin: 15px !important;
+}
+
+.mt-15 {
+    margin-top: 15px ;
+}
+
+.mt-8 {
+    margin-top: 8px;
+}
+
+.mt-30 {
+    margin-top: 30px !important;
+}
+
+.mr-8 {
+    margin-right: 8px !important;
+}
