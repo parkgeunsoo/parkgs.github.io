@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/parkgs.github.io/static/css/main.30a6797b.css",
-    "main.js": "/parkgs.github.io/static/js/main.9921f29d.js",
+    "main.js": "/parkgs.github.io/static/js/main.346d327f.js",
     "static/js/592.7e388ec4.chunk.js": "/parkgs.github.io/static/js/592.7e388ec4.chunk.js",
     "static/media/Pretendard-Light.ttf": "/parkgs.github.io/static/media/Pretendard-Light.765cf452534f2a4016dd.ttf",
     "static/media/Pretendard-Bold.ttf": "/parkgs.github.io/static/media/Pretendard-Bold.0bf949025a2d20b21bfe.ttf",
@@ -23,11 +23,11 @@
     "static/media/slick.woff": "/parkgs.github.io/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/parkgs.github.io/index.html",
     "main.30a6797b.css.map": "/parkgs.github.io/static/css/main.30a6797b.css.map",
-    "main.9921f29d.js.map": "/parkgs.github.io/static/js/main.9921f29d.js.map",
+    "main.346d327f.js.map": "/parkgs.github.io/static/js/main.346d327f.js.map",
     "592.7e388ec4.chunk.js.map": "/parkgs.github.io/static/js/592.7e388ec4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.30a6797b.css",
-    "static/js/main.9921f29d.js"
+    "static/js/main.346d327f.js"
   ]
 }
