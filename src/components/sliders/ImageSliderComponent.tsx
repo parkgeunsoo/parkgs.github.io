@@ -8,11 +8,11 @@ const ImageSliderComponent: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const images = [
-        { id: 1, path: "/images/main-banner-01.jpg", alt: "1", title: "영림 인테리어스", text: "영림 인테리어스 디자이너가 제안하는 스타일컬렉션부터 다양한 사람들의 리모델링 스토리까지, 나에게 영감을 불어넣어줄 다채로운 공간을 만나보세요" },
-        { id: 2, path: "/images/main-banner-02.jpg", alt: "2", title: "하이엔드 라이프, 아펠", text: "현재의 우리 그리고 미래의 모두를 위한 공간과 문화를 만드는 브랜드, 오랜 시간 쌓아온 기술력과 깊이 있는 디자인으로 만들어낸 아펠 시리즈를 만나보세요." },
-        { id: 3, path: "/images/main-banner-03.jpg", alt: "3", title: "영림키친바스", text: "365일, 당신의 라이프스타일을 고민합니다.  나와 우리 가족의 이야기가 담긴 집, 영림키친바스와 함께 만들어보세요." },
-        { id: 4, path: "/images/main-banner-04.jpg", alt: "4", title: "영림 인테리어스", text: "영림 인테리어스 디자이너가 제안하는 스타일컬렉션부터 다양한 사람들의 리모델링 스토리까지, 나에게 영감을 불어넣어줄 다채로운 공간을 만나보세요" },
-        { id: 5, path: "/images/main-banner-05.jpg", alt: "5", title: "영림창호", text: "뛰어난 단열과 기밀성으로 더 포근하고 아늑한 창 영림프라임창호 좋은 창호의 기준이 됩니다." },
+        { id: 1, path: `${process.env.PUBLIC_URL}/images/main-banner-01.jpg`, alt: "1", title: "영림 인테리어스", text: "영림 인테리어스 디자이너가 제안하는 스타일컬렉션부터 다양한 사람들의 리모델링 스토리까지, 나에게 영감을 불어넣어줄 다채로운 공간을 만나보세요" },
+        { id: 2, path: `${process.env.PUBLIC_URL}/images/main-banner-02.jpg`, alt: "2", title: "하이엔드 라이프, 아펠", text: "현재의 우리 그리고 미래의 모두를 위한 공간과 문화를 만드는 브랜드, 오랜 시간 쌓아온 기술력과 깊이 있는 디자인으로 만들어낸 아펠 시리즈를 만나보세요." },
+        { id: 3, path: `${process.env.PUBLIC_URL}/images/main-banner-03.jpg`, alt: "3", title: "영림키친바스", text: "365일, 당신의 라이프스타일을 고민합니다.  나와 우리 가족의 이야기가 담긴 집, 영림키친바스와 함께 만들어보세요." },
+        { id: 4, path: `${process.env.PUBLIC_URL}/images/main-banner-04.jpg`, alt: "4", title: "영림 인테리어스", text: "영림 인테리어스 디자이너가 제안하는 스타일컬렉션부터 다양한 사람들의 리모델링 스토리까지, 나에게 영감을 불어넣어줄 다채로운 공간을 만나보세요" },
+        { id: 5, path: `${process.env.PUBLIC_URL}/images/main-banner-05.jpg`, alt: "5", title: "영림창호", text: "뛰어난 단열과 기밀성으로 더 포근하고 아늑한 창 영림프라임창호 좋은 창호의 기준이 됩니다." },
     ];
 
 

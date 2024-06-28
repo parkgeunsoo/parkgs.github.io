@@ -45,19 +45,18 @@ const CategorySliderBanner = () => {
         event.currentTarget.alt = "Image not available";  
     };
      const images = [
-        { id: 1, path: "/images/img-kitchen.jpg", alt: "키친" , title:"키친"},
-        { id: 2, path: "/images/img-bath.jpg", alt: "바스", title:"바스" },
-        { id: 3, path: "/images/img-door.jpg", alt: "도어", title:"도어" },
-        { id: 4, path: "/images/img-interlockingDoor.jpg", alt: "중문", title:"중문"},
-        { id: 5, path: "/images/img-window.jpg", alt: "창호", title:"창호" },
-        { id: 6, path: "/images/img-wallFinish.jpg", alt: "몰딩/월/마루", title:"몰딩/월/마루"},
-        { id: 7, path: "/images/img-film.jpg", alt: "인테리어 필름", title:"인테리어 필름" },
-        { id: 8, path: "/images/img-built-in-closet.jpg", alt: "붙박이장", title:"붙박이장" },
+        { id: 1, path: `${process.env.PUBLIC_URL}/images/img-kitchen.jpg`, alt: "키친" , title:"키친"},
+        { id: 2, path: `${process.env.PUBLIC_URL}/images/img-bath.jpg`, alt: "바스", title:"바스" },
+        { id: 3, path: `${process.env.PUBLIC_URL}/images/img-door.jpg`, alt: "도어", title:"도어" },
+        { id: 4, path: `${process.env.PUBLIC_URL}/images/img-interlockingDoor.jpg`, alt: "중문", title:"중문"},
+        { id: 5, path: `${process.env.PUBLIC_URL}/images/img-window.jpg`, alt: "창호", title:"창호" },
+        { id: 6, path: `${process.env.PUBLIC_URL}/images/img-wallFinish.jpg`, alt: "몰딩/월/마루", title:"몰딩/월/마루"},
+        { id: 7, path: `${process.env.PUBLIC_URL}/images/img-film.jpg`, alt: "인테리어 필름", title:"인테리어 필름" },
+        { id: 8, path: `${process.env.PUBLIC_URL}/images/img-built-in-closet.jpg`, alt: "붙박이장", title:"붙박이장" },
     ];
     return (
         <div ref={box1}>
             <Container>
-            {/* <Link to="/Kitchen">Kitchen</Link> */}
                 <div className='section design-textbox'>
                     <div className="design-textbox__title">
                         다양한 라이프스타일 속에서 최적화된 

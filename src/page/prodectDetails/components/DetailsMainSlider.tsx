@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import { Container } from 'react-bootstrap';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,7 +21,6 @@ interface DetailMainSliderProps{
 }
 
 const DetailsMainSlider: React.FC<DetailMainSliderProps> = ({ contents }) => {
-
     const [currentIndex, setCurrentIndex] = useState(0);
     const swiperRef = useRef<any>(null);
   
