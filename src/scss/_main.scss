@@ -220,6 +220,7 @@ img {
 }
 .banner-container{
     position: relative;
+    margin-bottom: 80px;
     .pc-img-banner{
         @include media-breakpoint-down(lg){
             display: none;

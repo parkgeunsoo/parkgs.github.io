@@ -22,9 +22,9 @@ const App: React.FC = () => {
     return (
         <>
          <Router basename="/parkgs.github.io">
-            {/* <Header /> */}
+            <Header />
             <AppRouter />
-            {/* <Footer /> */}
+            <Footer />
          </Router>
         </>
     );
