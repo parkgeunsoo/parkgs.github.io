@@ -14,7 +14,7 @@ const MainPage: React.FC = () => {
         console.log(container);
     };
 
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);

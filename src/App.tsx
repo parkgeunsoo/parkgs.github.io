@@ -16,13 +16,12 @@ const App: React.FC = () => {
             offset: 100,
         });
         AOS.refresh();
-        console.log("App component mounted");
     }, []);
 
     return (
         <>
          <Router basename="/parkgs.github.io">
-                <AppRouter />
+            <AppRouter />
          </Router>
         </>
     );
