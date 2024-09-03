@@ -5,6 +5,10 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+// 테마
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './components/Theme';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -22,9 +26,11 @@ const App: React.FC = () => {
     return (
         <>
          <Router basename="/parkgs.github.io">
-            <Header />
-            <AppRouter />
-            <Footer />
+            {/* <Header /> */}
+            <ThemeProvider theme={theme}>
+                <AppRouter />
+            </ThemeProvider>
+            {/* <Footer /> */}
          </Router>
         </>
     );

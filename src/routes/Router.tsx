@@ -9,6 +9,7 @@ import Window from '../page/prodectDetails/Window';
 import WallFinish from '../page/prodectDetails/WallFinish';
 import Film from '../page/prodectDetails/Film';
 import BuiltInCloset from '../page/prodectDetails/BuiltInCloset';
+import Guide from '../page/Guide';
 
 const AppRouter = () => {
     console.log("AppRouter component mounted");
