@@ -4,7 +4,6 @@ import AppRouter from "./routes/Router";
 import { BrowserRouter as Router } from 'react-router-dom';
 
 // 테마
-import { ThemeProvider } from '@mui/material/styles';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
