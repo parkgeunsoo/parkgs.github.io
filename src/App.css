@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@font-face {
+  font-family: "SeoulNamsanM";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  unicode-range: U+AC00-D7AF, U+1100-11FF, U+3130-318F;
+}
+body {
+  position: relative;
+  font-family: "SeoulNamsanM", "DM Sans", sans-serif !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+.App {
+  max-height: 100vh;
+  overflow: auto;
+}
+.App::-webkit-scrollbar {
+  width: 8px;
+}
+.App::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+}
+
+body,
+div,
+ul,
+li,
+ol,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+textarea,
+p,
+select,
+button,
+figure {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+  color: #1a0dab;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+a:visited {
+  color: #609;
+}
+
+button {
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img,
+fieldset {
+  border: 0;
+}
+
+video,
+img {
+  width: 100%;
+}
+
+ol,
+li,
+ul {
+  list-style: none;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.m-15 {
+  margin: 15px !important;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+.mt-30 {
+  margin-top: 30px !important;
+}
+
+.mr-8 {
+  margin-right: 8px !important;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+}
+/*# sourceMappingURL=App.css.map */

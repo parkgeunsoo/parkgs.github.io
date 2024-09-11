@@ -1,18 +1,211 @@
+@font-face {
+  font-family: "INGAME";
+  font-weight: 300;
+  src: url("//fco.vod.nexoncdn.co.kr/fonts/YoonGothic530.woff2") format("woff2"),
+    url("//fco.vod.nexoncdn.co.kr/fonts/YoonGothic530.woff") format("woff");
+}
+
+@font-face {
+  font-family: "INGAME";
+  font-weight: 400;
+  src: url("//fco.vod.nexoncdn.co.kr/fonts/YoonGothic540.woff2") format("woff2"),
+    url("//fco.vod.nexoncdn.co.kr/fonts/YoonGothic540.woff") format("woff");
+}
 /* Swiper 기본 설정 */
-.swiper {
-  .swiper-slide {
-    width: 210px !important;
-    height: 350px !important;
-    .card-wrap {
+// .swiper {
+//   cursor: pointer;
+//   .swiper-slide {
+//     width: 210px !important;
+//     height: 350px !important;
+//     .card-wrap {
+//       width: 189px;
+//       height: 303px;
+//       position: relative;
+//       background-image: url("../../public/images/card_bg.png");
+//       background-repeat: no-repeat;
+//       background-size: contain;
+//       .season-mark {
+//         position: absolute;
+//         width: 46px;
+//         height: 46px;
+//         background-color: #fff;
+//         border-radius: 50%;
+//         bottom: 86px;
+//         left: 9px;
+//         z-index: 10;
+//         .ld-icon {
+//           position: absolute;
+//           width: 33px;
+//           height: 33px;
+//           top: 50%;
+//           left: 50%;
+//           transform: translate(-50%, -50%);
+//           z-index: 10;
+//         }
+//       }
+//       .infoBox {
+//         position: absolute;
+//         left: 16px;
+//         top: 55px;
+//         text-align: center;
+//         letter-spacing: -1px;
+//         z-index: 10;
+//         .number {
+//           font-size: 37px;
+//           color: #fff;
+//           font-weight: 400;
+//           letter-spacing: 0;
+//           text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+//           font-family: "INGAME";
+//           line-height: 1;
+//         }
+//         .position {
+//           font-size: 26px;
+//           color: #fff;
+//           text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+//           font-family: "INGAME";
+//           font-weight: 100;
+//           line-height: 1;
+//         }
+//         .nationalityImg {
+//           width: 28px;
+//           height: 14px;
+//         }
+//       }
+//       .contents {
+//         position: absolute;
+//         bottom: 0;
+//         width: 100%;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         gap: 4px;
+//         left: 50%;
+//         bottom: 47px;
+//         transform: translateX(-50%);
+//         .badge-icon {
+//           width: 20px;
+//           height: 16px;
+//         }
+//         .name {
+//           font-size: 17px;
+//           font-weight: 500;
+//         }
+//       }
+//       .playerImg {
+//         position: absolute;
+//         width: 155px;
+//         bottom: 79px;
+//         left: 55%;
+//         transform: translateX(-50%);
+//         z-index: 1;
+//       }
+//     }
+//   }
+// }
+.map {
+  position: relative;
+  width: 1600px;
+  height: 1000px;
+  background-image: url("../../public/images/map.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.card-wrap {
+  width: 189px;
+  height: 303px;
+  position: relative;
+  background-image: url("../../public/images/card_bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  .season-mark {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    background-color: #fff;
+    border-radius: 50%;
+    bottom: 86px;
+    left: 9px;
+    z-index: 10;
+    .ld-icon {
+      position: absolute;
+      width: 33px;
+      height: 33px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+  }
+  .infoBox {
+    position: absolute;
+    left: 16px;
+    top: 55px;
+    text-align: center;
+    letter-spacing: -1px;
+    z-index: 10;
+    .number {
+      font-size: 37px;
+      color: #fff;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+      font-family: "INGAME";
+      line-height: 1;
+    }
+    .position {
+      font-size: 26px;
+      color: #fff;
+      text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+      font-family: "INGAME";
+      font-weight: 100;
+      line-height: 1;
+    }
+    .nationalityImg {
+      width: 28px;
+      height: 14px;
+    }
+  }
+  .contents {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    left: 50%;
+    bottom: 47px;
+    transform: translateX(-50%);
+    .badge-icon {
+      width: 20px;
+      height: 16px;
+    }
+    .name {
+      font-size: 17px;
+      font-weight: 500;
+    }
+  }
+  .playerImg {
+    position: absolute;
+    width: 155px;
+    bottom: 79px;
+    left: 55%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+}
+.nationality {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  .nationalityImg {
+    width: 28px;
+    height: 16px;
+    img {
       width: 100%;
       height: 100%;
-      position: relative;
-      .bg {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 10px;
-      }
+      display: block;
     }
   }
 }

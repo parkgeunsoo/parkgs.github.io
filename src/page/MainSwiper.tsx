@@ -1,13 +1,14 @@
 import "../../src/App.scss";
 import React, { useState } from "react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { useDrag, useDrop, DragSourceMonitor } from "react-dnd";
-import Draggable from "react-draggable";
+import { Swiper, SwiperSlide } from "swiper/react";
+// import { gsap } from "gsap";
 
-const ItemTypes = {
-  CARD: "card",
-};
+// Swiper 모듈을 swiper/modules에서 가져오기
+import { Navigation, EffectFade } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface Player {
   number: number;
@@ -32,7 +33,7 @@ interface Player {
   previous_team: string;
 }
 
-const playersData: Player[] = [
+const player: Player[] = [
   {
     number: 10,
     name: "웨인 루니",
@@ -282,94 +283,14 @@ const playersData: Player[] = [
   },
 ];
 
-interface CardProps {
-  player: Player;
-  index: number;
-  moveCard: (dragIndex: number, hoverIndex: number) => void;
-}
-
-const DraggableCard: React.FC<CardProps> = ({ player, index, moveCard }) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-
-  const [, drop] = useDrop({
-    accept: ItemTypes.CARD,
-    hover(item: { index: number }) {
-      if (!ref.current) return;
-      const dragIndex = item.index;
-      const hoverIndex = index;
-      if (dragIndex === hoverIndex) return;
-
-      moveCard(dragIndex, hoverIndex);
-      item.index = hoverIndex;
-    },
-  });
-
-  const [{ isDragging }, drag] = useDrag({
-    type: ItemTypes.CARD,
-    item: { index },
-    collect: (monitor: DragSourceMonitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-
-  drag(drop(ref));
-
-  return (
-    <Draggable>
-      <div
-        ref={ref}
-        className="card-wrap"
-        style={{ opacity: isDragging ? 0.5 : 1 }} // 드래그 중일 때 투명도 변경
-      >
-        <div className="season-mark">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/ld_icon.png`}
-            alt=""
-            className="ld-icon"
-          />
-        </div>
-        <div className="infoBox">
-          <p className="number">{player.number}</p>
-          <p className="position">{player.position}</p>
-          <img
-            src={player.nationalityImg}
-            alt="Nationality"
-            className="nationalityImg"
-          />
-        </div>
-        <div className="playerImg">
-          <img src={player.playerImg} alt={player.name} />
-        </div>
-        <div className="contents">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/card_icon.png`}
-            alt=""
-            className="badge-icon"
-          />
-          <p className="name">{player.name}</p>
-        </div>
-      </div>
-    </Draggable>
-  );
-};
-
 const MainPage: React.FC = () => {
-  const [players, setPlayers] = useState(playersData);
   const [selectedPlayer, setSelectPlayer] = useState<Player | null>(null);
-
-  const moveCard = (dragIndex: number, hoverIndex: number) => {
-    const newPlayers = [...players];
-    const [draggedPlayer] = newPlayers.splice(dragIndex, 1);
-    newPlayers.splice(hoverIndex, 0, draggedPlayer);
-    setPlayers(newPlayers);
-  };
 
   const handleSlideClick = (player: Player) => {
     setSelectPlayer(player);
   };
-
   return (
-    <DndProvider backend={HTML5Backend}>
+    <>
       <div className="playerinfoBox">
         {selectedPlayer ? (
           <>
@@ -380,11 +301,12 @@ const MainPage: React.FC = () => {
             <p className="weight">몸무게: {selectedPlayer.weight}</p>
             <p className="nationality">
               국적:
-              <img
-                src={selectedPlayer.nationalityImg}
-                alt="Nationality Flag"
-                className="nationalityImg"
-              />
+              <p className="nationalityImg">
+                <img
+                  src={selectedPlayer.nationalityImg}
+                  alt="Nationality Flag"
+                />
+              </p>
             </p>
             <p className="birthDate">
               생년월일: {selectedPlayer.date_of_birth}
@@ -395,17 +317,55 @@ const MainPage: React.FC = () => {
           <p>선수를 선택하세요</p>
         )}
       </div>
-      <div className="map">
-        {players.map((player, index) => (
-          <DraggableCard
-            key={index}
-            index={index}
-            player={player}
-            moveCard={moveCard}
-          />
+      <Swiper
+        modules={[EffectFade]} // Swiper 모듈 설정
+        slidesPerView="auto" // 한 번에 보이는 슬라이드 수
+        centeredSlides={true} // 슬라이드를 가운데 정렬
+        spaceBetween={30} // 슬라이드 간 간격
+      >
+        {player.map((player, index) => (
+          <SwiperSlide key={index} onClick={() => handleSlideClick(player)}>
+            <div className="card-wrap">
+              <div className="infoBox">
+                <p className="number">{player.number}</p>
+                <p className="position">{player.position}</p>
+                <img
+                  src={player.nationalityImg}
+                  alt=""
+                  className="nationalityImg"
+                />
+              </div>
+
+              <div className="playerImg">
+                <img src={player.playerImg} alt="" />
+              </div>
+              <div className="season-mark">
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/ld_icon.png`}
+                  alt="card"
+                  className="ld-icon"
+                />
+              </div>
+              <div className="contents">
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/card_icon.png`}
+                  alt="card"
+                  className="badge-icon"
+                />
+                <p className="name">{player.name}</p>
+              </div>
+            </div>
+          </SwiperSlide>
         ))}
+      </Swiper>
+      <div className="map">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/map.png`}
+          alt="card"
+          className="badge-icon"
+        />
       </div>
-    </DndProvider>
+    </>
   );
 };
 
