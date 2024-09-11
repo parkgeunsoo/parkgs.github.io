@@ -107,15 +107,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .map {
-  position: relative;
   width: 1600px;
   height: 1000px;
   background-image: url("../../public/images/map.png");
   background-repeat: no-repeat;
   background-size: contain;
-  margin-top: 5rem;
+  margin: 5rem 0;
 }
 .card-wrap {
   width: 189px;
