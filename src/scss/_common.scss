@@ -103,6 +103,11 @@
 //     }
 //   }
 // }
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .map {
   position: relative;
   width: 1600px;
@@ -110,6 +115,7 @@
   background-image: url("../../public/images/map.png");
   background-repeat: no-repeat;
   background-size: contain;
+  margin-top: 5rem;
 }
 .card-wrap {
   width: 189px;
@@ -118,6 +124,7 @@
   background-image: url("../../public/images/card_bg.png");
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: pointer;
   .season-mark {
     position: absolute;
     width: 46px;

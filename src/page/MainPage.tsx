@@ -315,12 +315,8 @@ const DraggableCard: React.FC<CardProps> = ({ player, index, moveCard }) => {
   drag(drop(ref));
 
   return (
-    <Draggable>
-      <div
-        ref={ref}
-        className="card-wrap"
-        style={{ opacity: isDragging ? 0.5 : 1 }} // 드래그 중일 때 투명도 변경
-      >
+    <Draggable nodeRef={ref} bounds="parent">
+      <div ref={ref} className="card-wrap">
         <div className="season-mark">
           <img
             src={`${process.env.PUBLIC_URL}/images/ld_icon.png`}
@@ -395,15 +391,17 @@ const MainPage: React.FC = () => {
           <p>선수를 선택하세요</p>
         )}
       </div>
-      <div className="map">
-        {players.map((player, index) => (
-          <DraggableCard
-            key={index}
-            index={index}
-            player={player}
-            moveCard={moveCard}
-          />
-        ))}
+      <div className="wrapper">
+        <div className="map">
+          {players.map((player, index) => (
+            <DraggableCard
+              key={index}
+              index={index}
+              player={player}
+              moveCard={moveCard}
+            />
+          ))}
+        </div>
       </div>
     </DndProvider>
   );
