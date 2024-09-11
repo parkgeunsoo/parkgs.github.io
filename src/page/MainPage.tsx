@@ -1,13 +1,6 @@
 import "../../src/App.scss";
 import React, { useState } from "react";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { useDrag, useDrop, DragSourceMonitor } from "react-dnd";
-import Draggable from "react-draggable";
-
-const ItemTypes = {
-  CARD: "card",
-};
+import Draggable from "react-draggable"; // react-draggable 사용
 
 interface Player {
   number: number;
@@ -288,35 +281,22 @@ interface CardProps {
   moveCard: (dragIndex: number, hoverIndex: number) => void;
 }
 
-const DraggableCard: React.FC<CardProps> = ({ player, index, moveCard }) => {
+const DraggableCard: React.FC<CardProps> = ({ player }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
-  const [, drop] = useDrop({
-    accept: ItemTypes.CARD,
-    hover(item: { index: number }) {
-      if (!ref.current) return;
-      const dragIndex = item.index;
-      const hoverIndex = index;
-      if (dragIndex === hoverIndex) return;
-
-      moveCard(dragIndex, hoverIndex);
-      item.index = hoverIndex;
-    },
-  });
-
-  const [{ isDragging }, drag] = useDrag({
-    type: ItemTypes.CARD,
-    item: { index },
-    collect: (monitor: DragSourceMonitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-
-  drag(drop(ref));
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault(); // 기본 드래그 동작 방지
+  };
 
   return (
-    <Draggable nodeRef={ref} bounds="parent">
-      <div ref={ref} className="card-wrap">
+    <Draggable
+      nodeRef={ref}
+      bounds="parent"
+      onStop={(e, data) => {
+        console.log("드래그가 멈췄습니다!", data);
+      }}
+    >
+      <div ref={ref} className="card-wrap" onDragStart={handleDragStart}>
         <div className="season-mark">
           <img
             src={`${process.env.PUBLIC_URL}/images/ld_icon.png`}
@@ -350,22 +330,15 @@ const DraggableCard: React.FC<CardProps> = ({ player, index, moveCard }) => {
 };
 
 const MainPage: React.FC = () => {
-  const [players, setPlayers] = useState(playersData);
+  const [players] = useState(playersData);
   const [selectedPlayer, setSelectPlayer] = useState<Player | null>(null);
-
-  const moveCard = (dragIndex: number, hoverIndex: number) => {
-    const newPlayers = [...players];
-    const [draggedPlayer] = newPlayers.splice(dragIndex, 1);
-    newPlayers.splice(hoverIndex, 0, draggedPlayer);
-    setPlayers(newPlayers);
-  };
 
   const handleSlideClick = (player: Player) => {
     setSelectPlayer(player);
   };
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <>
       <div className="playerinfoBox">
         {selectedPlayer ? (
           <>
@@ -393,17 +366,19 @@ const MainPage: React.FC = () => {
       </div>
       <div className="wrapper">
         <div className="map">
-          {players.map((player, index) => (
-            <DraggableCard
-              key={index}
-              index={index}
-              player={player}
-              moveCard={moveCard}
-            />
-          ))}
+          <div className="card-list">
+            {players.map((player, index) => (
+              <DraggableCard
+                key={index}
+                index={index}
+                player={player}
+                moveCard={() => {}}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </DndProvider>
+    </>
   );
 };
 
