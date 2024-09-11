@@ -1,6 +1,6 @@
 import "../../src/App.scss";
-import React, { useState } from "react";
-import Draggable from "react-draggable"; // react-draggable 사용
+import React, { useState, useRef } from "react";
+import Draggable, { DraggableEvent, DraggableData } from "react-draggable"; // react-draggable 사용
 
 interface Player {
   number: number;
@@ -277,31 +277,46 @@ const playersData: Player[] = [
 
 interface CardProps {
   player: Player;
-  index: number;
-  moveCard: (dragIndex: number, hoverIndex: number) => void;
+  onClick: (player: Player) => void;
 }
 
-const DraggableCard: React.FC<CardProps> = ({ player }) => {
-  const ref = React.useRef<HTMLDivElement>(null);
+const DraggableCard: React.FC<CardProps> = ({ player, onClick }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [dragging, setDragging] = useState(false); // 드래그 상태를 추적
 
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault(); // 기본 드래그 동작 방지
+  const handleDragStart = (e: DraggableEvent, data: DraggableData) => {
+    setDragging(true); // 드래그 상태 활성화
+  };
+
+  const handleDragStop = (e: DraggableEvent, data: DraggableData) => {
+    setDragging(false); // 드래그 상태 비활성화
+  };
+
+  const handleClick = () => {
+    if (!dragging) {
+      onClick(player); // 드래그가 아닐 때만 클릭 이벤트 처리
+    }
   };
 
   return (
     <Draggable
       nodeRef={ref}
       bounds="parent"
-      onStop={(e, data) => {
-        console.log("드래그가 멈췄습니다!", data);
-      }}
+      onStart={handleDragStart}
+      onStop={handleDragStop}
     >
-      <div ref={ref} className="card-wrap" onDragStart={handleDragStart}>
+      <div
+        ref={ref}
+        className="card-wrap"
+        onClick={handleClick}
+        onDragStart={(e) => e.preventDefault()} // 기본 브라우저 드래그 방지
+      >
         <div className="season-mark">
           <img
             src={`${process.env.PUBLIC_URL}/images/ld_icon.png`}
             alt=""
             className="ld-icon"
+            onDragStart={(e) => e.preventDefault()} // 이미지 드래그 방지
           />
         </div>
         <div className="infoBox">
@@ -311,16 +326,22 @@ const DraggableCard: React.FC<CardProps> = ({ player }) => {
             src={player.nationalityImg}
             alt="Nationality"
             className="nationalityImg"
+            onDragStart={(e) => e.preventDefault()} // 이미지 드래그 방지
           />
         </div>
         <div className="playerImg">
-          <img src={player.playerImg} alt={player.name} />
+          <img
+            src={player.playerImg}
+            alt={player.name}
+            onDragStart={(e) => e.preventDefault()} // 이미지 드래그 방지
+          />
         </div>
         <div className="contents">
           <img
             src={`${process.env.PUBLIC_URL}/images/card_icon.png`}
             alt=""
             className="badge-icon"
+            onDragStart={(e) => e.preventDefault()} // 이미지 드래그 방지
           />
           <p className="name">{player.name}</p>
         </div>
@@ -370,9 +391,8 @@ const MainPage: React.FC = () => {
             {players.map((player, index) => (
               <DraggableCard
                 key={index}
-                index={index}
                 player={player}
-                moveCard={() => {}}
+                onClick={handleSlideClick}
               />
             ))}
           </div>
